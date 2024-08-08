@@ -1,9 +1,14 @@
 package selaz.api.entity.user;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import selaz.api.dto.UserDTO;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "use_user")
 public class User {
@@ -21,4 +26,11 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(name = "use_nivel", nullable = false, length = 4)
     private UserNivel useNivel;
+
+    // DTO constructor, for creating new users
+    public User(UserDTO userDTO) {
+        this.useUsername = userDTO.useUsername();
+        this.usePassword = userDTO.usePassword();
+        this.useNivel = userDTO.useNivel();
+    }
 }
