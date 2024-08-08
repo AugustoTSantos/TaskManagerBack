@@ -1,10 +1,12 @@
 package selaz.api.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import selaz.api.dto.TaskDTO;
 import selaz.api.entity.task.Task;
+import selaz.api.entity.task.TaskStatus;
 import selaz.api.repository.TaskRepository;
 
 import java.util.List;
@@ -55,4 +57,12 @@ public class TaskService {
         this.taskRepository.delete(task);
     }
     //Crud End
+
+    public List<Task> getAllTasksByStatus(TaskStatus tasStatus) {
+        return this.taskRepository.findAllByTasStatus(tasStatus);
+    }
+
+    public List<Task> sortAllByDueDate() {
+        return this.taskRepository.findAll(Sort.by(Sort.Direction.DESC, "tasDueDate"));
+    }
 }

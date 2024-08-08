@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import selaz.api.dto.TaskDTO;
 import selaz.api.entity.task.Task;
+import selaz.api.entity.task.TaskStatus;
 import selaz.api.service.TaskService;
 
 import java.util.List;
@@ -45,5 +46,17 @@ public class TaskController {
         taskService.deleteTask(tasId);
 
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/getAllTasksByStatus/{tasStatus}")
+    public ResponseEntity<List<Task>> getAllTasksByStatus(@PathVariable("tasStatus") TaskStatus tasStatus) {
+        List<Task> tasks = taskService.getAllTasksByStatus(tasStatus);
+        return new ResponseEntity<>(tasks, HttpStatus.OK);
+    }
+
+    @GetMapping("/sortByDueDate")
+    public ResponseEntity<List<Task>> sortByDueDate() {
+        List<Task> tasks = taskService.sortAllByDueDate();
+        return new ResponseEntity<>(tasks, HttpStatus.OK);
     }
 }
