@@ -1,11 +1,15 @@
 package selaz.api.entity.association;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import selaz.api.entity.user.User;
 import selaz.api.entity.task.Task;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "ass_association")
 public class Association {
