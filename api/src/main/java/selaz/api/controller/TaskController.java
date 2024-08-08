@@ -53,4 +53,10 @@ public class TaskController {
         List<Task> tasks = taskService.getAllTasksByStatus(tasStatus);
         return new ResponseEntity<>(tasks, HttpStatus.OK);
     }
+
+    @GetMapping("/sortByDueDate")
+    public ResponseEntity<List<Task>> sortByDueDate() {
+        List<Task> tasks = taskService.sortAllByDueDate();
+        return new ResponseEntity<>(tasks, HttpStatus.OK);
+    }
 }

@@ -1,6 +1,7 @@
 package selaz.api.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import selaz.api.dto.TaskDTO;
@@ -61,5 +62,7 @@ public class TaskService {
         return this.taskRepository.findAllByTasStatus(tasStatus);
     }
 
-
+    public List<Task> sortAllByDueDate() {
+        return this.taskRepository.findAll(Sort.by(Sort.Direction.DESC, "tasDueDate"));
+    }
 }
