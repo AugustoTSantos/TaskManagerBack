@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import selaz.api.dto.AssociationDTO;
 import selaz.api.entity.user.User;
 import selaz.api.entity.task.Task;
 
@@ -25,4 +26,9 @@ public class Association {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ass_tas_id", referencedColumnName = "tas_id")
     private Task assTasId;
+
+    public Association(AssociationDTO associationDTO) {
+        this.assUseId = associationDTO.assUseId();
+        this.assTasId = associationDTO.assTasId();
+    }
 }
