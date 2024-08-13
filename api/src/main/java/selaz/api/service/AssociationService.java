@@ -2,6 +2,7 @@ package selaz.api.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import selaz.api.dto.AssociationDTO;
 import selaz.api.entity.association.Association;
 import selaz.api.repository.AssociationRepository;
